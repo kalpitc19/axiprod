@@ -11,13 +11,15 @@
       d:DesignHeight="450"
       d:DesignWidth="800"
       Title="HomePage">
-    
+
     <Page.DataContext>
         <viewModels:MainViewModel />
     </Page.DataContext>
-    
+
     <Grid x:Name="menulist">
-        <materialDesign:Card>
+        <Frame x:Name="CustomFrame"
+               NavigationUIVisibility="Hidden" />
+        <materialDesign:Card x:Name="add_customer">
             <TabControl VerticalContentAlignment="Center"
                         materialDesign:ColorZoneAssist.Mode="Inverted"
                         Style="{StaticResource MaterialDesignNavigationRailTabControl}"
@@ -25,7 +27,7 @@
                 <TabItem>
 
                     <TabItem.Header>
-                        
+
                         <StackPanel Width="auto"
                                     Height="auto">
                             <materialDesign:PackIcon Width="24"
@@ -40,22 +42,21 @@
                         <Button Content="Add New"
                                 Width="157"
                                 VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
                                 Background="#FFFE5E04"
-                                Margin="286,39,286,0" />
-                        <Grid VerticalAlignment="Bottom" Height="333">
+                                Margin="0,39,0,0"
+                                Click="Button_Click_3" />
+                        <Grid VerticalAlignment="Bottom"
+                              Margin="0,150,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
-                                <DataGrid CanUserAddRows="False"
-                                          ItemsSource="{Binding Items4}"
-                                          SelectionMode="Extended"
-                                          SelectionUnit="Cell">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding Items4.NAME}" Header="{}"></DataGridTextColumn>
-                                        
-                                    </DataGrid.Columns>
-                                </DataGrid>
+                            <DataGrid CanUserAddRows="False"
+                                      ItemsSource="{Binding Items4}"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="Cell">
+                            </DataGrid>
 
                         </Grid>
                     </Grid>
@@ -147,20 +148,24 @@
                                        Text="SignOut" />
                         </StackPanel>
                     </TabItem.Header>
-                    <TabPanel Margin="16">
+                    <TabPanel VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Width="99">
                         <TextBlock Margin="0,0,0,8"
                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                    Text="" />
-                        <TextBlock Margin="301,56,-300,-56">
+
+                        <TextBlock Margin="0,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
                             <LineBreak />
                             <Run Text="Want to Sign Out" /><Run Text=" " />
                             <LineBreak />
                         </TextBlock>
-                        <Button
-                                Content="Confirm Sign Out"
-                                Width="157"
+                        <Button Content="Confirm Sign Out"
+                                Width="159"
                                 Click="Button_Click_2"
-                                Margin="175,110,-174,-94"
+                                Margin="-28,0,-32,0"
                                 Background="#FFFE5E04" />
 
                     </TabPanel>
