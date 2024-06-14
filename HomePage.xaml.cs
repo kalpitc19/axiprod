@@ -53,5 +53,11 @@ namespace Axiprod
             Window.GetWindow(this).Close();
             main.Show();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            add_customer.Visibility = Visibility.Collapsed;
+            CustomFrame.Navigate(new AddCustomer());
+        }
     }
 }

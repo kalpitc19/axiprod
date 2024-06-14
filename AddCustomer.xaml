@@ -9,7 +9,7 @@
       Title="AddCustomer">
 
     <Grid Background="white">
-        <StackPanel Width="800">
+        <StackPanel Width="800" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Margin="20 40">
                 <TextBlock Text="Customer Details" Margin="20" Foreground="Black" TextAlignment="Center" FontSize="38" FontFamily="Great Vibes"></TextBlock>
                 <StackPanel>
@@ -28,11 +28,27 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
-                    <TextBox x:Name="address4" Margin="10 0" materialDesign:HintAssist.Hint="Enter Username / Email" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                    <TextBox x:Name="sicCode" Margin="10 0" materialDesign:HintAssist.Hint="SIC Code" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
+                    <TextBox x:Name="taxId" Margin="10 0" materialDesign:HintAssist.Hint="Tax ID" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
-                    <TextBox x:Name="address5" Margin="10 0" materialDesign:HintAssist.Hint="Enter Username / Email" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                    <TextBox x:Name="stateTaxCode" Margin="10 0" materialDesign:HintAssist.Hint="State Tax Code" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
+                    <TextBox x:Name="discount" Margin="10 0" materialDesign:HintAssist.Hint="Discount" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
+                    <TextBox x:Name="territory" Margin="10 0" materialDesign:HintAssist.Hint="Territory" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
+                    <TextBox x:Name="salesMan" Margin="10 0" materialDesign:HintAssist.Hint="Salesman" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
+                    <TextBox x:Name="status" Margin="10 0" materialDesign:HintAssist.Hint="Status" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
+                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="black"/>
+                    <TextBox x:Name="email" Margin="10 0" materialDesign:HintAssist.Hint="Eamil" Foreground="black" Width="250" BorderBrush="black" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" TextChanged="txtUsername_TextChanged" />
                 </StackPanel>
                 <StackPanel Margin="10" HorizontalAlignment="Center">
                     <Button Width="200" Height="40" Style="{StaticResource MaterialDesignRaisedButton}" 
