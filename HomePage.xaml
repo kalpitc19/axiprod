@@ -5,12 +5,17 @@
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewModels="clr-namespace:Axiprod.ViewModels"
       xmlns:local="clr-namespace:Axiprod"
       mc:Ignorable="d"
       d:DesignHeight="450"
       d:DesignWidth="800"
       Title="HomePage">
-
+    
+    <Page.DataContext>
+        <viewModels:MainViewModel />
+    </Page.DataContext>
+    
     <Grid x:Name="menulist">
         <materialDesign:Card>
             <TabControl VerticalContentAlignment="Center"
@@ -23,16 +28,37 @@
                         
                         <StackPanel Width="auto"
                                     Height="auto">
-                            <Image Source="C:\Users\Ritik\.nuget\packages\handycontrols\3.5.3\icon.png"
-                                   Width="24"
-                                   Height="24" />
+                            <materialDesign:PackIcon Width="24"
+                                                     Height="24"
+                                                     HorizontalAlignment="Center"
+                                                     Kind="User" />
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Customer" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                      
-                    </StackPanel>
+                    <Grid>
+                        <Button Content="Add New"
+                                Width="157"
+                                VerticalAlignment="Top"
+                                Background="#FFFE5E04"
+                                Margin="286,39,286,0" />
+                        <Grid VerticalAlignment="Bottom" Height="333">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                                <DataGrid CanUserAddRows="False"
+                                          ItemsSource="{Binding Items4}"
+                                          SelectionMode="Extended"
+                                          SelectionUnit="Cell">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Items4.NAME}" Header="{}"></DataGridTextColumn>
+                                        
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                        </Grid>
+                    </Grid>
                 </TabItem>
                 <TabItem>
                     <TabItem.Header>
@@ -43,13 +69,13 @@
                                                      HorizontalAlignment="Center"
                                                      Kind="Folder" />
                             <TextBlock HorizontalAlignment="Center"
-                                       Text="All Files" />
+                                       Text="Vendors" />
                         </StackPanel>
                     </TabItem.Header>
                     <StackPanel Margin="16">
                         <TextBlock Margin="0,0,0,8"
                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="All files" />
+                                   Text="Vendors" />
                         <TextBlock>
                               <Run Text="tab 1 content. Default look and behaviors." />
                               <LineBreak />
@@ -69,13 +95,13 @@
                                                      HorizontalAlignment="Center"
                                                      Kind="ClockOutline" />
                             <TextBlock HorizontalAlignment="Center"
-                                       Text="Recent" />
+                                       Text="Items" />
                         </StackPanel>
                     </TabItem.Header>
                     <StackPanel Margin="16">
                         <TextBlock Margin="0,0,0,8"
                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="Recent" />
+                                   Text="Items" />
                         <TextBlock>
                               <Run Text="tab 2 content. Default look and behaviors." />
                               <LineBreak />

@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Axiprod.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +24,15 @@ namespace Axiprod
     /// </summary>
     public partial class HomePage : Page
     {
+        private string connectionString;
+        SqlConnection con = new SqlConnection();
+        SqlCommand com = new SqlCommand();
+        SqlDataReader dr;
         public HomePage()
         {
             InitializeComponent();
+            connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString.ToString();
+            DataContext = new MainViewModel(connectionString);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

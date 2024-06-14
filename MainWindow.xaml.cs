@@ -11,6 +11,13 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows.Controls.Primitives;
+using System.Data;
+using static MaterialDesignThemes.Wpf.Theme.ToolBar;
+using Axiprod.Models;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Xml.Linq;
+using Axiprod.ViewModels;
 
 namespace Axiprod
 {
@@ -28,9 +35,12 @@ namespace Axiprod
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString.ToString();
         }
-
         public void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            //login without verification
+            //MainFrame.Navigate(new HomePage());
+            //LoginPage.Visibility = Visibility.Collapsed;
+
             if (VerifyUser(txtUsername.Text, txtPassword.Password))
             {
                 //MessageBox.Show("Login Successfully", "Congrats", MessageBoxButton.OK, MessageBoxImage.Information);
