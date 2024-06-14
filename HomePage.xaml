@@ -73,19 +73,28 @@
                                        Text="Vendors" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                        <TextBlock Margin="0,0,0,8"
-                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="Vendors" />
-                        <TextBlock>
-                              <Run Text="tab 1 content. Default look and behaviors." />
-                              <LineBreak />
-                              <LineBreak />
-                              <Run FontStyle="Italic">
-                              Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                              </Run>
-                        </TextBlock>
-                    </StackPanel>
+                    <Grid>
+                        <Button Content="Add New Vendor"
+                                Width="157"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Background="#FFFE5E04"
+                                Margin="0,39,0,0"
+                                Click="Button_Click_3" />
+                        <Grid VerticalAlignment="Bottom"
+                              Margin="0,150,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <DataGrid CanUserAddRows="False"
+                                      ItemsSource="{Binding AllVendors}"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="Cell">
+                            </DataGrid>
+
+                        </Grid>
+                    </Grid>
                 </TabItem>
                 <TabItem>
                     <TabItem.Header>

@@ -22,7 +22,7 @@
                 <GradientStop Color="#FFFE8704" Offset="0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <Border Height="390" Width="800" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="0 0 180 0" Background="#FFFFFF" MouseDown="Border_MouseDown">
+        <Border Height="390" Width="800" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="180 0 180 0" Background="#FFFFFF" MouseDown="Border_MouseDown">
         </Border>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
         <StackPanel x:Name="LoginPage" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
