@@ -38,21 +38,21 @@ namespace Axiprod
         public void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             //login without verification
-            //MainFrame.Navigate(new HomePage());
-            //LoginPage.Visibility = Visibility.Collapsed;
+            MainFrame.Navigate(new HomePage());
+            LoginPage.Visibility = Visibility.Collapsed;
 
-            if (VerifyUser(txtUsername.Text, txtPassword.Password))
-            {
-                //MessageBox.Show("Login Successfully", "Congrats", MessageBoxButton.OK, MessageBoxImage.Information);
-                LoginPage.Visibility = Visibility.Collapsed;
+            //if (VerifyUser(txtUsername.Text, txtPassword.Password))
+            //{
+            //    //MessageBox.Show("Login Successfully", "Congrats", MessageBoxButton.OK, MessageBoxImage.Information);
+            //    LoginPage.Visibility = Visibility.Collapsed;
 
-                //showing next page
-                MainFrame.Navigate(new HomePage());
-            }
-            else
-            {
-                MessageBox.Show("Username or password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+                //    //showing next page
+                //    MainFrame.Navigate(new HomePage());
+                //}
+            //else
+            //{
+            //    MessageBox.Show("Username or password is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
         private bool VerifyUser(string username, string password)
         {

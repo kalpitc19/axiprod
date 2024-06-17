@@ -1,4 +1,5 @@
 ﻿using Axiprod.Models;
+using HandyControl.Tools.Extension;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -83,6 +84,43 @@ namespace Axiprod
                                 CONTACT = reader.IsDBNull(reader.GetOrdinal("CONTACT")) ? null : reader.GetString(reader.GetOrdinal("CONTACT")),
                                 TYPE = reader.IsDBNull(reader.GetOrdinal("TYPE")) ? null : reader.GetString(reader.GetOrdinal("TYPE")),
 
+                            });
+                        }
+                    }
+                }
+            }
+
+            return data;
+        }
+        public ObservableCollection<Jobs> GetAllJobsData()
+        {
+            var data = new ObservableCollection<Jobs>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand("SELECT * FROM dbo.Job", connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            data.Add(new Jobs
+                            {
+                                CUST_NO = reader.GetInt16(0),
+                                JOB_NO = reader.GetInt32(reader.GetOrdinal("JOB_NO")),
+                                TYPE = reader.GetDecimal(reader.GetOrdinal("TYPE")),
+                                DATE = reader.GetDateTime(reader.GetOrdinal("DATE")),
+                                SALESMAN= reader.GetString(reader.GetOrdinal("SALESMAN")),
+                                SHIP_TO = reader.GetInt16(reader.GetOrdinal("SHIP_TO")),
+                                CUST_PO = reader.GetString(reader.GetOrdinal("CUST_PO")),
+                                NAME = reader.IsDBNull(reader.GetOrdinal("NAME")) ? null : reader.GetString(reader.GetOrdinal("NAME")),
+                                TERMS= reader.IsDBNull(reader.GetOrdinal("TERMS")) ? null : reader.GetString(reader.GetOrdinal("TERMS")),
+                                TAX_ID = reader.IsDBNull(reader.GetOrdinal("TAX_ID")) ? null : reader.GetString(reader.GetOrdinal("TAX_ID")),
+                                INVC_CODE = reader.IsDBNull(reader.GetOrdinal("INVC_CODE")) ? null : reader.GetString(reader.GetOrdinal("INVC_CODE")),
+                                TAX_CODE = reader.IsDBNull(reader.GetOrdinal("TAX_CODE")) ? null : reader.GetString(reader.GetOrdinal("TAX_CODE")),
+                                TAX_STATE = reader.IsDBNull(reader.GetOrdinal("TAX_STATE")) ? null : reader.GetString(reader.GetOrdinal("TAX_STATE")),
+                                TO= (byte)(reader.IsDBNull(reader.GetOrdinal("TO")) ? 0 : reader.GetByte(reader.GetOrdinal("TO")))
                             });
                         }
                     }
