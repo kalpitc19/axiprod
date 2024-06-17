@@ -15,16 +15,26 @@
     <Page.DataContext>
         <viewModels:MainViewModel />
     </Page.DataContext>
-
+    <Page.Resources>
+        <Style x:Key="CommonGridStyle"
+               TargetType="Grid">
+            <Setter Property="Margin"
+                    Value="10" />
+            <Setter Property="Background"
+                    Value="White" />
+        </Style>
+    </Page.Resources>
     <Grid x:Name="menulist">
         <Frame x:Name="CustomFrame"
-               NavigationUIVisibility="Hidden" />
+               NavigationUIVisibility="Hidden" Margin="73,0,0,0" />
         <materialDesign:Card x:Name="add_customer">
             <TabControl VerticalContentAlignment="Center"
                         materialDesign:ColorZoneAssist.Mode="Inverted"
                         Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                        
                         Background="White">
-                <TabItem>
+                <TabItem x:Name="CustomerTab"
+                         PreviewMouseDown="TabItem_PreviewMouseDown">
 
                     <TabItem.Header>
 
@@ -38,14 +48,14 @@
                                        Text="Customer" />
                         </StackPanel>
                     </TabItem.Header>
-                    <Grid>
+                    <Grid x:Name="GridTab1" Style="{StaticResource CommonGridStyle}">
                         <Button Content="Add New"
                                 Width="157"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Background="#FFFE5E04"
                                 Margin="0,39,0,0"
-                                Click="Button_Click_3" />
+                                Click="AddNewCustomer" />
                         <Grid VerticalAlignment="Bottom"
                               Margin="0,150,0,0">
                             <Grid.RowDefinitions>
@@ -61,7 +71,8 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem x:Name="VendorTab"
+                         PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
@@ -73,14 +84,14 @@
                                        Text="Vendors" />
                         </StackPanel>
                     </TabItem.Header>
-                    <Grid>
+                    <Grid x:Name="GridTab2" Style="{StaticResource CommonGridStyle}">
                         <Button Content="Add New Vendor"
                                 Width="157"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Background="#FFFE5E04"
                                 Margin="0,39,0,0"
-                                Click="Button_Click_3" />
+                                Click="AddNewCustomer" />
                         <Grid VerticalAlignment="Bottom"
                               Margin="0,150,0,0">
                             <Grid.RowDefinitions>
@@ -96,33 +107,42 @@
                         </Grid>
                     </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
                             <materialDesign:PackIcon Width="24"
                                                      Height="24"
                                                      HorizontalAlignment="Center"
-                                                     Kind="ClockOutline" />
+                                                     Kind="BagPersonal" />
                             <TextBlock HorizontalAlignment="Center"
-                                       Text="Items" />
+                                       Text="Jobs" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                        <TextBlock Margin="0,0,0,8"
-                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="Items" />
-                        <TextBlock>
-                              <Run Text="tab 2 content. Default look and behaviors." />
-                              <LineBreak />
-                              <LineBreak />
-                              <Run FontStyle="Italic">
-                              Praesent sed dui arcu. Vivamus porta auctor sagittis
-                              </Run>
-                        </TextBlock>
-                    </StackPanel>
+                    <Grid x:Name="GridTab3" Style="{StaticResource CommonGridStyle}">
+                        <Button Content="Add New Job"
+                                Width="157"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Background="#FFFE5E04"
+                                Margin="0,39,0,0"
+                                Click="Button_Click_AddJob" />
+                        <Grid VerticalAlignment="Bottom"
+                              Margin="0,150,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <DataGrid CanUserAddRows="False"
+                                      ItemsSource="{Binding AllVendors}"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="Cell">
+                            </DataGrid>
+
+                        </Grid>
+                    </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
@@ -134,18 +154,11 @@
                                        Text="Photos" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                        <TextBlock Margin="0,0,0,8"
-                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="Photos" />
-                        <TextBlock>
-                              <Run Text="tab 3 content. Default look and behaviors." />
-                              <LineBreak />
-                              <LineBreak />
-                        </TextBlock>
-                    </StackPanel>
+                    <Grid x:Name="GridTab4">
+                        
+                    </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
@@ -157,6 +170,7 @@
                                        Text="SignOut" />
                         </StackPanel>
                     </TabItem.Header>
+                    <Grid x:Name="GridTab5">
                     <TabPanel VerticalAlignment="Center"
                               HorizontalAlignment="Center"
                               Width="99">
@@ -178,6 +192,7 @@
                                 Background="#FFFE5E04" />
 
                     </TabPanel>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </materialDesign:Card>

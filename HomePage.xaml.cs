@@ -54,10 +54,29 @@ namespace Axiprod
             main.Show();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_AddJob(object sender, RoutedEventArgs e)
         {
-            add_customer.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void AddNewCustomer(object sender, RoutedEventArgs e)
+        {
+            //add_customer.Visibility = Visibility.Collapsed;
+
+            //making FRame to come in front
+            Grid.SetZIndex(CustomFrame, menulist.Children.Count);
+            Grid.SetZIndex(add_customer, menulist.Children.Count-1);
             CustomFrame.Navigate(new AddCustomer());
+        }
+
+        private void TabItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //whenever tabitem is clicked-
+            if (sender is TabItem tabItem)
+            {
+                Grid.SetZIndex(add_customer, menulist.Children.Count);
+                Grid.SetZIndex(CustomFrame, menulist.Children.Count - 1);
+            }
         }
     }
 }
