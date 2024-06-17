@@ -1,4 +1,5 @@
-﻿using Axiprod.ViewModels;
+﻿using Axiprod.Models;
+using Axiprod.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +78,44 @@ namespace Axiprod
                 Grid.SetZIndex(add_customer, menulist.Children.Count);
                 Grid.SetZIndex(CustomFrame, menulist.Children.Count - 1);
             }
+        }
+
+        private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            var editedElement = e.EditingElement as TextBox;
+            if (editedElement != null)
+            {
+                string newValue = editedElement.Text;
+
+                // Get the row data
+                var editedRow = (Customers)e.Row.Item;
+
+                // Get the column that was edited
+                string columnName = e.Column.Header.ToString();
+
+                // Perform the update
+                UpdateDatabase(editedRow.CUST_ID, columnName, newValue);
+            }
+
+        }
+        private void UpdateDatabase(int id, string columnName, string newValue)
+        {
+            string updateQuery = $"UPDATE Customer SET {columnName} = @newValue WHERE CUST_NO = @id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.Parameters.AddWithValue("@newValue", newValue);
+                command.Parameters.AddWithValue("@id", id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void LoadData()
+        {
+            // Implementation for loading data into the DataGrid
         }
     }
 }

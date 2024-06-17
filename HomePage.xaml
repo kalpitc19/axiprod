@@ -65,7 +65,8 @@
                             <DataGrid CanUserAddRows="False"
                                       ItemsSource="{Binding Items4}"
                                       SelectionMode="Extended"
-                                      SelectionUnit="Cell">
+                                      SelectionUnit="Cell"
+                                      CellEditEnding="DataGrid_CellEditEnding">
                             </DataGrid>
 
                         </Grid>
@@ -134,7 +135,7 @@
                             </Grid.RowDefinitions>
 
                             <DataGrid CanUserAddRows="False"
-                                      ItemsSource="{Binding AllVendors}"
+                                      ItemsSource="{Binding AllJobs}"
                                       SelectionMode="Extended"
                                       SelectionUnit="Cell">
                             </DataGrid>
