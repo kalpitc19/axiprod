@@ -14,7 +14,7 @@ namespace Axiprod.ViewModels
         SqlConnection con = new SqlConnection();
         SqlCommand com = new SqlCommand();
         SqlDataReader dr;
-        private ObservableCollection<Customers> _items4;
+        private ObservableCollection<Customers> _allcustomers;
         private ObservableCollection<Vendors> _allvendors;
         private ObservableCollection<Jobs> _alljobs;
         private readonly DataService _dataService;
@@ -31,12 +31,12 @@ namespace Axiprod.ViewModels
             LoadData();
         }
 
-        public ObservableCollection<Customers> Items4
+        public ObservableCollection<Customers> AllCustomers
         {
-            get => _items4;
+            get => _allcustomers;
             set
             {
-                _items4 = value;
+                _allcustomers = value;
                 OnPropertyChanged();
             }
         }
@@ -63,7 +63,7 @@ namespace Axiprod.ViewModels
 
         private void LoadData()
         {
-            Items4 = _dataService.GetAllCustomersData();
+            AllCustomers = _dataService.GetAllCustomersData();
             AllVendors = _dataService.GetAllVendorsData();
             AllJobs = _dataService.GetAllJobsData();
         }

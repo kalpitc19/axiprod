@@ -63,7 +63,7 @@
                             </Grid.RowDefinitions>
 
                             <DataGrid CanUserAddRows="False"
-                                      ItemsSource="{Binding Items4}"
+                                      ItemsSource="{Binding AllCustomers}"
                                       SelectionMode="Extended"
                                       SelectionUnit="Cell"
                                       CellEditEnding="DataGrid_CellEditEnding">
