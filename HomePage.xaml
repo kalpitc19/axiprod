@@ -5,36 +5,75 @@
       xmlns:hc="https://handyorg.github.io/handycontrol"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewModels="clr-namespace:Axiprod.ViewModels"
       xmlns:local="clr-namespace:Axiprod"
       mc:Ignorable="d"
       d:DesignHeight="450"
       d:DesignWidth="800"
       Title="HomePage">
 
+    <Page.DataContext>
+        <viewModels:MainViewModel />
+    </Page.DataContext>
+    <Page.Resources>
+        <Style x:Key="CommonGridStyle"
+               TargetType="Grid">
+            <Setter Property="Margin"
+                    Value="10" />
+            <Setter Property="Background"
+                    Value="White" />
+        </Style>
+    </Page.Resources>
     <Grid x:Name="menulist">
-        <materialDesign:Card>
+        <Frame x:Name="CustomFrame"
+               NavigationUIVisibility="Hidden" Margin="73,0,0,0" />
+        <materialDesign:Card x:Name="add_customer">
             <TabControl VerticalContentAlignment="Center"
                         materialDesign:ColorZoneAssist.Mode="Inverted"
                         Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                        
                         Background="White">
-                <TabItem>
+                <TabItem x:Name="CustomerTab"
+                         PreviewMouseDown="TabItem_PreviewMouseDown">
 
                     <TabItem.Header>
-                        
+
                         <StackPanel Width="auto"
                                     Height="auto">
-                            <Image Source="C:\Users\Ritik\.nuget\packages\handycontrols\3.5.3\icon.png"
-                                   Width="24"
-                                   Height="24" />
+                            <materialDesign:PackIcon Width="24"
+                                                     Height="24"
+                                                     HorizontalAlignment="Center"
+                                                     Kind="User" />
                             <TextBlock HorizontalAlignment="Center"
                                        Text="Customer" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                      
-                    </StackPanel>
+                    <Grid x:Name="GridTab1" Style="{StaticResource CommonGridStyle}">
+                        <Button Content="Add New"
+                                Width="157"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Background="#FFFE5E04"
+                                Margin="0,39,0,0"
+                                Click="AddNewCustomer" />
+                        <Grid VerticalAlignment="Bottom"
+                              Margin="0,150,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <DataGrid CanUserAddRows="False"
+                                      ItemsSource="{Binding AllCustomers}"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="Cell"
+                                      CellEditEnding="DataGrid_CellEditEnding">
+                            </DataGrid>
+
+                        </Grid>
+                    </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem x:Name="VendorTab"
+                         PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
@@ -43,50 +82,68 @@
                                                      HorizontalAlignment="Center"
                                                      Kind="Folder" />
                             <TextBlock HorizontalAlignment="Center"
-                                       Text="All Files" />
+                                       Text="Vendors" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                        <TextBlock Margin="0,0,0,8"
-                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="All files" />
-                        <TextBlock>
-                              <Run Text="tab 1 content. Default look and behaviors." />
-                              <LineBreak />
-                              <LineBreak />
-                              <Run FontStyle="Italic">
-                              Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                              </Run>
-                        </TextBlock>
-                    </StackPanel>
+                    <Grid x:Name="GridTab2" Style="{StaticResource CommonGridStyle}">
+                        <Button Content="Add New Vendor"
+                                Width="157"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Background="#FFFE5E04"
+                                Margin="0,39,0,0"
+                                Click="AddNewCustomer" />
+                        <Grid VerticalAlignment="Bottom"
+                              Margin="0,150,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <DataGrid CanUserAddRows="False"
+                                      ItemsSource="{Binding AllVendors}"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="Cell">
+                            </DataGrid>
+
+                        </Grid>
+                    </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
                             <materialDesign:PackIcon Width="24"
                                                      Height="24"
                                                      HorizontalAlignment="Center"
-                                                     Kind="ClockOutline" />
+                                                     Kind="BagPersonal" />
                             <TextBlock HorizontalAlignment="Center"
-                                       Text="Recent" />
+                                       Text="Jobs" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                        <TextBlock Margin="0,0,0,8"
-                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="Recent" />
-                        <TextBlock>
-                              <Run Text="tab 2 content. Default look and behaviors." />
-                              <LineBreak />
-                              <LineBreak />
-                              <Run FontStyle="Italic">
-                              Praesent sed dui arcu. Vivamus porta auctor sagittis
-                              </Run>
-                        </TextBlock>
-                    </StackPanel>
+                    <Grid x:Name="GridTab3" Style="{StaticResource CommonGridStyle}">
+                        <Button Content="Add New Job"
+                                Width="157"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Background="#FFFE5E04"
+                                Margin="0,39,0,0"
+                                Click="Button_Click_AddJob" />
+                        <Grid VerticalAlignment="Bottom"
+                              Margin="0,150,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <DataGrid CanUserAddRows="False"
+                                      ItemsSource="{Binding AllJobs}"
+                                      SelectionMode="Extended"
+                                      SelectionUnit="Cell">
+                            </DataGrid>
+
+                        </Grid>
+                    </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
@@ -98,18 +155,11 @@
                                        Text="Photos" />
                         </StackPanel>
                     </TabItem.Header>
-                    <StackPanel Margin="16">
-                        <TextBlock Margin="0,0,0,8"
-                                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                   Text="Photos" />
-                        <TextBlock>
-                              <Run Text="tab 3 content. Default look and behaviors." />
-                              <LineBreak />
-                              <LineBreak />
-                        </TextBlock>
-                    </StackPanel>
+                    <Grid x:Name="GridTab4">
+                        
+                    </Grid>
                 </TabItem>
-                <TabItem>
+                <TabItem PreviewMouseDown="TabItem_PreviewMouseDown">
                     <TabItem.Header>
                         <StackPanel Width="auto"
                                     Height="auto">
@@ -121,23 +171,29 @@
                                        Text="SignOut" />
                         </StackPanel>
                     </TabItem.Header>
-                    <TabPanel Margin="16">
+                    <Grid x:Name="GridTab5">
+                    <TabPanel VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Width="99">
                         <TextBlock Margin="0,0,0,8"
                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                    Text="" />
-                        <TextBlock Margin="301,56,-300,-56">
+
+                        <TextBlock Margin="0,0,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
                             <LineBreak />
                             <Run Text="Want to Sign Out" /><Run Text=" " />
                             <LineBreak />
                         </TextBlock>
-                        <Button
-                                Content="Confirm Sign Out"
-                                Width="157"
+                        <Button Content="Confirm Sign Out"
+                                Width="159"
                                 Click="Button_Click_2"
-                                Margin="175,110,-174,-94"
+                                Margin="-28,0,-32,0"
                                 Background="#FFFE5E04" />
 
                     </TabPanel>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </materialDesign:Card>
